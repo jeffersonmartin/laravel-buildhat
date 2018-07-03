@@ -227,6 +227,8 @@ class GeneratorConfig
         $commandData->addDynamicVariable('$MODEL_NAME_PLURAL_DASHED$', $this->mDashedPlural);
         $commandData->addDynamicVariable('$MODEL_NAME_SLASH$', $this->mSlash);
         $commandData->addDynamicVariable('$MODEL_NAME_PLURAL_SLASH$', $this->mSlashPlural);
+        $commandData->addDynamicVariable('$MODEL_NAME_DOT$', $this->mDot);
+        $commandData->addDynamicVariable('$MODEL_NAME_PLURAL_DOT$', $this->mDotPlural);
         $commandData->addDynamicVariable('$MODEL_NAME_HUMAN$', $this->mHuman);
         $commandData->addDynamicVariable('$MODEL_NAME_PLURAL_HUMAN$', $this->mHumanPlural);
 
@@ -298,6 +300,8 @@ class GeneratorConfig
         $this->mDashedPlural = str_replace('_', '-', Str::snake($this->mSnakePlural));
         $this->mSlash = str_replace('_', '/', Str::snake($this->mSnake));
         $this->mSlashPlural = str_replace('_', '/', Str::snake($this->mSnakePlural));
+        $this->mDot = str_replace('_', '.', Str::snake($this->mSnake));
+        $this->mDotPlural = str_replace('_', '.', Str::snake($this->mSnakePlural));
         $this->mHuman = title_case(str_replace('_', ' ', Str::snake($this->mSnake)));
         $this->mHumanPlural = title_case(str_replace('_', ' ', Str::snake($this->mSnakePlural)));
     }
