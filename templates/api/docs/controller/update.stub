@@ -1,8 +1,8 @@
 /**
-     * Update the specified $MODEL_NAME$ in storage.
-     * PUT/PATCH /$MODEL_NAME_PLURAL_CAMEL$/{id}
+     * Update the specified $MODEL_NAME_HUMAN$ in storage.
+     * PUT/PATCH /$MODEL_NAME_PLURAL_SLASH$/{uuid}
      *
-     * @param  int $id
+     * @param  uuid $uuid
      * @param Update$MODEL_NAME$APIRequest $request
      *
      * @return Response

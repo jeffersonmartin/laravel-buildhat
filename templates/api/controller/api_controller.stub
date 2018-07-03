@@ -4,23 +4,21 @@ namespace $NAMESPACE_API_CONTROLLER$;
 
 use $NAMESPACE_API_REQUEST$\Create$MODEL_NAME$APIRequest;
 use $NAMESPACE_API_REQUEST$\Update$MODEL_NAME$APIRequest;
-use $NAMESPACE_MODEL$\$MODEL_NAME$;
-use $NAMESPACE_REPOSITORY$\$MODEL_NAME$Repository;
+use $NAMESPACE_MODEL$;
+use $NAMESPACE_REPOSITORY$;
 use Illuminate\Http\Request;
 use $NAMESPACE_APP$\Http\Controllers\AppBaseController;
-use InfyOm\Generator\Criteria\LimitOffsetCriteria;
+use Jeffersonmartin\Buildhat\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
 $DOC_CONTROLLER$
 class $MODEL_NAME$APIController extends AppBaseController
 {
-    /** @var  $MODEL_NAME$Repository */
-    private $$MODEL_NAME_CAMEL$Repository;
 
-    public function __construct($MODEL_NAME$Repository $$MODEL_NAME_CAMEL$Repo)
+    protected function $MODEL_NAME_CAMEL$Repository()
     {
-        $this->$MODEL_NAME_CAMEL$Repository = $$MODEL_NAME_CAMEL$Repo;
+        return app(Repositories\$MODEL_NAME_PLURAL$::class);
     }
 
     $DOC_INDEX$
@@ -28,9 +26,9 @@ class $MODEL_NAME$APIController extends AppBaseController
     {
         $this->$MODEL_NAME_CAMEL$Repository->pushCriteria(new RequestCriteria($request));
         $this->$MODEL_NAME_CAMEL$Repository->pushCriteria(new LimitOffsetCriteria($request));
-        $$MODEL_NAME_PLURAL_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->all();
+        $$MODEL_NAME_PLURAL_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->all();
 
-        return $this->sendResponse($$MODEL_NAME_PLURAL_CAMEL$->toArray(), '$MODEL_NAME_PLURAL_HUMAN$ retrieved successfully');
+        return $this->sendResponse($$MODEL_NAME_PLURAL_SNAKE$->toArray(), '$MODEL_NAME_PLURAL_HUMAN$ retrieved successfully');
     }
 
     $DOC_STORE$
@@ -38,22 +36,22 @@ class $MODEL_NAME$APIController extends AppBaseController
     {
         $input = $request->all();
 
-        $$MODEL_NAME_PLURAL_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->create($input);
+        $$MODEL_NAME_PLURAL_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->create($input);
 
-        return $this->sendResponse($$MODEL_NAME_PLURAL_CAMEL$->toArray(), '$MODEL_NAME_HUMAN$ saved successfully');
+        return $this->sendResponse($$MODEL_NAME_PLURAL_SNAKE$->toArray(), '$MODEL_NAME_HUMAN$ saved successfully');
     }
 
     $DOC_SHOW$
     public function show($id)
     {
         /** @var $MODEL_NAME$ $$MODEL_NAME_CAMEL$ */
-        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
 
-        if (empty($$MODEL_NAME_CAMEL$)) {
+        if (empty($$MODEL_NAME_SNAKE$)) {
             return $this->sendError('$MODEL_NAME_HUMAN$ not found');
         }
 
-        return $this->sendResponse($$MODEL_NAME_CAMEL$->toArray(), '$MODEL_NAME_HUMAN$ retrieved successfully');
+        return $this->sendResponse($$MODEL_NAME_SNAKE$->toArray(), '$MODEL_NAME_HUMAN$ retrieved successfully');
     }
 
     $DOC_UPDATE$
@@ -62,28 +60,28 @@ class $MODEL_NAME$APIController extends AppBaseController
         $input = $request->all();
 
         /** @var $MODEL_NAME$ $$MODEL_NAME_CAMEL$ */
-        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
 
-        if (empty($$MODEL_NAME_CAMEL$)) {
+        if (empty($$MODEL_NAME_SNAKE$)) {
             return $this->sendError('$MODEL_NAME_HUMAN$ not found');
         }
 
-        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->update($input, $id);
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->update($input, $id);
 
-        return $this->sendResponse($$MODEL_NAME_CAMEL$->toArray(), '$MODEL_NAME$ updated successfully');
+        return $this->sendResponse($$MODEL_NAME_SNAKE$->toArray(), '$MODEL_NAME$ updated successfully');
     }
 
     $DOC_DESTROY$
     public function destroy($id)
     {
         /** @var $MODEL_NAME$ $$MODEL_NAME_CAMEL$ */
-        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
 
-        if (empty($$MODEL_NAME_CAMEL$)) {
+        if (empty($$MODEL_NAME_SNAKE$)) {
             return $this->sendError('$MODEL_NAME_HUMAN$ not found');
         }
 
-        $$MODEL_NAME_CAMEL$->delete();
+        $$MODEL_NAME_SNAKE$->delete();
 
         return $this->sendResponse($id, '$MODEL_NAME_HUMAN$ deleted successfully');
     }

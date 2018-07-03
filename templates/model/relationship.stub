@@ -1,7 +1,4 @@
-/**
-     * @return \Illuminate\Database\Eloquent\Relations\$RELATIONSHIP_CLASS$
-     **/
-    public function $FUNCTION_NAME$()
+public function $FUNCTION_NAME$()
     {
         return $this->$RELATION$(\$NAMESPACE_MODEL$\$RELATION_MODEL_NAME$::class$INPUT_FIELDS$);
     }

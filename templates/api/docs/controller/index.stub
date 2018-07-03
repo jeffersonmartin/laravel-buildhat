@@ -1,6 +1,6 @@
 /**
-     * Display a listing of the $MODEL_NAME$.
-     * GET|HEAD /$MODEL_NAME_PLURAL_CAMEL$
+     * Display a listing of the $MODEL_NAME_PLURAL_HUMAN$.
+     * GET|HEAD /$MODEL_NAME_PLURAL_SLASH$
      *
      * @param Request $request
      * @return Response

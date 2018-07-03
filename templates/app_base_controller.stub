@@ -2,7 +2,7 @@
 
 namespace $NAMESPACE_APP$\Http\Controllers;
 
-use InfyOm\Generator\Utils\ResponseUtil;
+use Jeffersonmartin\Buildhat\Utils\ResponseUtil;
 use Response;
 
 /**

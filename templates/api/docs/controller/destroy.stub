@@ -1,8 +1,8 @@
 /**
-     * Remove the specified $MODEL_NAME$ from storage.
-     * DELETE /$MODEL_NAME_PLURAL_CAMEL$/{id}
+     * Remove the specified $MODEL_NAME_HUMAN$ from storage.
+     * DELETE /$MODEL_NAME_PLURAL_SLASH$/{uuid}
      *
-     * @param  int $id
+     * @param  uuid $uuid
      *
      * @return Response
      */

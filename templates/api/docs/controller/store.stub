@@ -1,6 +1,6 @@
 /**
-     * Store a newly created $MODEL_NAME$ in storage.
-     * POST /$MODEL_NAME_PLURAL_CAMEL$
+     * Store a newly created $MODEL_NAME_HUMAN$ in storage.
+     * POST /$MODEL_NAME_PLURAL_SLASH$
      *
      * @param Create$MODEL_NAME$APIRequest $request
      *
