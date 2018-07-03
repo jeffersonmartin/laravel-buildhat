@@ -1,18 +1,18 @@
 <?php
 
-namespace InfyOm\Generator\Commands\VueJs;
+namespace Jeffersonmartin\Buildhat\Commands\VueJs;
 
-use InfyOm\Generator\Commands\BaseCommand;
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Generators\MigrationGenerator;
-use InfyOm\Generator\Generators\ModelGenerator;
-use InfyOm\Generator\Generators\RepositoryGenerator;
-use InfyOm\Generator\Generators\Scaffold\MenuGenerator;
-use InfyOm\Generator\Generators\VueJs\APIRequestGenerator;
-use InfyOm\Generator\Generators\VueJs\ControllerGenerator;
-use InfyOm\Generator\Generators\VueJs\ModelJsConfigGenerator;
-use InfyOm\Generator\Generators\VueJs\RoutesGenerator;
-use InfyOm\Generator\Generators\VueJs\ViewGenerator;
+use Jeffersonmartin\Buildhat\Commands\BaseCommand;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Generators\MigrationGenerator;
+use Jeffersonmartin\Buildhat\Generators\ModelGenerator;
+use Jeffersonmartin\Buildhat\Generators\RepositoryGenerator;
+use Jeffersonmartin\Buildhat\Generators\Scaffold\MenuGenerator;
+use Jeffersonmartin\Buildhat\Generators\VueJs\APIRequestGenerator;
+use Jeffersonmartin\Buildhat\Generators\VueJs\ControllerGenerator;
+use Jeffersonmartin\Buildhat\Generators\VueJs\ModelJsConfigGenerator;
+use Jeffersonmartin\Buildhat\Generators\VueJs\RoutesGenerator;
+use Jeffersonmartin\Buildhat\Generators\VueJs\ViewGenerator;
 
 class VueJsGeneratorCommand extends BaseCommand
 {
@@ -21,7 +21,7 @@ class VueJsGeneratorCommand extends BaseCommand
      *
      * @var string
      */
-    protected $name = 'infyom:vuejs';
+    protected $name = 'buildhat:vuejs';
 
     /**
      * The console command description.

@@ -1,6 +1,6 @@
 <?php
 
-namespace InfyOm\Generator\Contracts;
+namespace Jeffersonmartin\Buildhat\Contracts;
 
 interface TemplatesPublisherContract
 {

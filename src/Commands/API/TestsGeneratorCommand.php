@@ -1,12 +1,12 @@
 <?php
 
-namespace InfyOm\Generator\Commands\API;
+namespace Jeffersonmartin\Buildhat\Commands\API;
 
-use InfyOm\Generator\Commands\BaseCommand;
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Generators\API\APITestGenerator;
-use InfyOm\Generator\Generators\RepositoryTestGenerator;
-use InfyOm\Generator\Generators\TestTraitGenerator;
+use Jeffersonmartin\Buildhat\Commands\BaseCommand;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Generators\API\APITestGenerator;
+use Jeffersonmartin\Buildhat\Generators\RepositoryTestGenerator;
+use Jeffersonmartin\Buildhat\Generators\TestTraitGenerator;
 
 class TestsGeneratorCommand extends BaseCommand
 {
@@ -15,7 +15,7 @@ class TestsGeneratorCommand extends BaseCommand
      *
      * @var string
      */
-    protected $name = 'infyom.api:tests';
+    protected $name = 'buildhat.api:tests';
 
     /**
      * The console command description.

@@ -1,10 +1,10 @@
 <?php
 
-namespace InfyOm\Generator\Commands\Scaffold;
+namespace Jeffersonmartin\Buildhat\Commands\Scaffold;
 
-use InfyOm\Generator\Commands\BaseCommand;
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Generators\Scaffold\ViewGenerator;
+use Jeffersonmartin\Buildhat\Commands\BaseCommand;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Generators\Scaffold\ViewGenerator;
 
 class ViewsGeneratorCommand extends BaseCommand
 {
@@ -13,7 +13,7 @@ class ViewsGeneratorCommand extends BaseCommand
      *
      * @var string
      */
-    protected $name = 'infyom.scaffold:views';
+    protected $name = 'buildhat.scaffold:views';
 
     /**
      * The console command description.

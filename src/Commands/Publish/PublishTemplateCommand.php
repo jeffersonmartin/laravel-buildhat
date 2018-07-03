@@ -1,6 +1,6 @@
 <?php
 
-namespace InfyOm\Generator\Commands\Publish;
+namespace Jeffersonmartin\Buildhat\Commands\Publish;
 
 class PublishTemplateCommand extends PublishBaseCommand
 {
@@ -9,7 +9,7 @@ class PublishTemplateCommand extends PublishBaseCommand
      *
      * @var string
      */
-    protected $name = 'infyom.publish:templates';
+    protected $name = 'buildhat.publish:templates';
 
     /**
      * The console command description.
@@ -28,8 +28,8 @@ class PublishTemplateCommand extends PublishBaseCommand
     public function handle()
     {
         $this->templatesDir = config(
-            'infyom.laravel_generator.path.templates_dir',
-            base_path('resources/infyom/infyom-generator-templates/')
+            'buildhat.path.templates_dir',
+            base_path('resources/buildhat/buildhat-generator-templates/')
         );
 
         if ($this->publishGeneratorTemplates()) {
@@ -44,7 +44,7 @@ class PublishTemplateCommand extends PublishBaseCommand
     {
         $templatesPath = __DIR__.'/../../../templates';
 
-        return $this->publishDirectory($templatesPath, $this->templatesDir, 'infyom-generator-templates');
+        return $this->publishDirectory($templatesPath, $this->templatesDir, 'buildhat-generator-templates');
     }
 
     /**
@@ -52,11 +52,11 @@ class PublishTemplateCommand extends PublishBaseCommand
      */
     public function publishScaffoldTemplates()
     {
-        $templateType = config('infyom.laravel_generator.templates', 'adminlte-templates');
+        $templateType = config('buildhat.templates', 'adminlte-templates');
 
-        $templatesPath = base_path('vendor/infyomlabs/'.$templateType.'/templates/scaffold');
+        $templatesPath = base_path('vendor/jeffersonmartin/buildhat/'.$templateType.'/templates/scaffold');
 
-        return $this->publishDirectory($templatesPath, $this->templatesDir.'/scaffold', 'infyom-generator-templates/scaffold', true);
+        return $this->publishDirectory($templatesPath, $this->templatesDir.'/scaffold', 'buildhat-generator-templates/scaffold', true);
     }
 
     /**

@@ -1,10 +1,10 @@
 <?php
 
-namespace InfyOm\Generator\Commands\Scaffold;
+namespace Jeffersonmartin\Buildhat\Commands\Scaffold;
 
-use InfyOm\Generator\Commands\BaseCommand;
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Generators\Scaffold\RequestGenerator;
+use Jeffersonmartin\Buildhat\Commands\BaseCommand;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Generators\Scaffold\RequestGenerator;
 
 class RequestsGeneratorCommand extends BaseCommand
 {
@@ -13,7 +13,7 @@ class RequestsGeneratorCommand extends BaseCommand
      *
      * @var string
      */
-    protected $name = 'infyom.scaffold:requests';
+    protected $name = 'buildhat.scaffold:requests';
 
     /**
      * The console command description.

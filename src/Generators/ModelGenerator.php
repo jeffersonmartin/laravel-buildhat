@@ -1,11 +1,11 @@
 <?php
 
-namespace InfyOm\Generator\Generators;
+namespace Jeffersonmartin\Buildhat\Generators;
 
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Common\GeneratorFieldRelation;
-use InfyOm\Generator\Utils\FileUtil;
-use InfyOm\Generator\Utils\TableFieldsGenerator;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Common\GeneratorFieldRelation;
+use Jeffersonmartin\Buildhat\Utils\FileUtil;
+use Jeffersonmartin\Buildhat\Utils\TableFieldsGenerator;
 
 class ModelGenerator extends BaseGenerator
 {
@@ -30,7 +30,7 @@ class ModelGenerator extends BaseGenerator
     /**
      * ModelGenerator constructor.
      *
-     * @param \InfyOm\Generator\Common\CommandData $commandData
+     * @param \Jeffersonmartin\Buildhat\Common\CommandData $commandData
      */
     public function __construct(CommandData $commandData)
     {
@@ -71,22 +71,22 @@ class ModelGenerator extends BaseGenerator
         $templateData = $this->fillTimestamps($templateData);
 
         if ($this->commandData->getOption('primary')) {
-            $primary = infy_tab()."protected \$primaryKey = '".$this->commandData->getOption('primary')."';\n";
+            $primary = buildhat_tab()."protected \$primaryKey = '".$this->commandData->getOption('primary')."';\n";
         } else {
             $primary = '';
         }
 
         $templateData = str_replace('$PRIMARY$', $primary, $templateData);
 
-        $templateData = str_replace('$FIELDS$', implode(','.infy_nl_tab(1, 2), $fillables), $templateData);
+        $templateData = str_replace('$FIELDS$', implode(','.buildhat_nl_tab(1, 2), $fillables), $templateData);
 
-        $templateData = str_replace('$RULES$', implode(','.infy_nl_tab(1, 2), $this->generateRules()), $templateData);
+        $templateData = str_replace('$RULES$', implode(','.buildhat_nl_tab(1, 2), $this->generateRules()), $templateData);
 
-        $templateData = str_replace('$CAST$', implode(','.infy_nl_tab(1, 2), $this->generateCasts()), $templateData);
+        $templateData = str_replace('$CAST$', implode(','.buildhat_nl_tab(1, 2), $this->generateCasts()), $templateData);
 
         $templateData = str_replace(
             '$RELATIONS$',
-            fill_template($this->commandData->dynamicVars, implode(PHP_EOL.infy_nl_tab(1, 1), $this->generateRelations())),
+            fill_template($this->commandData->dynamicVars, implode(PHP_EOL.buildhat_nl_tab(1, 1), $this->generateRelations())),
             $templateData
         );
 
@@ -106,10 +106,10 @@ class ModelGenerator extends BaseGenerator
                 '$SOFT_DELETE_IMPORT$', "use Illuminate\\Database\\Eloquent\\SoftDeletes;\n",
                 $templateData
             );
-            $templateData = str_replace('$SOFT_DELETE$', infy_tab()."use SoftDeletes;\n", $templateData);
-            $deletedAtTimestamp = config('infyom.laravel_generator.timestamps.deleted_at', 'deleted_at');
+            $templateData = str_replace('$SOFT_DELETE$', buildhat_tab()."use SoftDeletes;\n", $templateData);
+            $deletedAtTimestamp = config('buildhat.timestamps.deleted_at', 'deleted_at');
             $templateData = str_replace(
-                '$SOFT_DELETE_DATES$', infy_nl_tab()."protected \$dates = ['".$deletedAtTimestamp."'];\n",
+                '$SOFT_DELETE_DATES$', buildhat_nl_tab()."protected \$dates = ['".$deletedAtTimestamp."'];\n",
                 $templateData
             );
         }
@@ -214,14 +214,14 @@ class ModelGenerator extends BaseGenerator
 
         if ($this->commandData->getOption('fromTable')) {
             if (empty($timestamps)) {
-                $replace = infy_nl_tab()."public \$timestamps = false;\n";
+                $replace = buildhat_nl_tab()."public \$timestamps = false;\n";
             } else {
                 list($created_at, $updated_at) = collect($timestamps)->map(function ($field) {
                     return !empty($field) ? "'$field'" : 'null';
                 });
 
-                $replace .= infy_nl_tab()."const CREATED_AT = $created_at;";
-                $replace .= infy_nl_tab()."const UPDATED_AT = $updated_at;\n";
+                $replace .= buildhat_nl_tab()."const CREATED_AT = $created_at;";
+                $replace .= buildhat_nl_tab()."const UPDATED_AT = $updated_at;\n";
             }
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('infy_tab')) {
+if (!function_exists('buildhat_tab')) {
     /**
      * Generates tab with spaces.
      *
@@ -8,13 +8,13 @@ if (!function_exists('infy_tab')) {
      *
      * @return string
      */
-    function infy_tab($spaces = 4)
+    function buildhat_tab($spaces = 4)
     {
         return str_repeat(' ', $spaces);
     }
 }
 
-if (!function_exists('infy_tabs')) {
+if (!function_exists('buildhat_tabs')) {
     /**
      * Generates tab with spaces.
      *
@@ -23,13 +23,13 @@ if (!function_exists('infy_tabs')) {
      *
      * @return string
      */
-    function infy_tabs($tabs, $spaces = 4)
+    function buildhat_tabs($tabs, $spaces = 4)
     {
-        return str_repeat(infy_tab($spaces), $tabs);
+        return str_repeat(buildhat_tab($spaces), $tabs);
     }
 }
 
-if (!function_exists('infy_nl')) {
+if (!function_exists('buildhat_nl')) {
     /**
      * Generates new line char.
      *
@@ -37,13 +37,13 @@ if (!function_exists('infy_nl')) {
      *
      * @return string
      */
-    function infy_nl($count = 1)
+    function buildhat_nl($count = 1)
     {
         return str_repeat(PHP_EOL, $count);
     }
 }
 
-if (!function_exists('infy_nls')) {
+if (!function_exists('buildhat_nls')) {
     /**
      * Generates new line char.
      *
@@ -52,13 +52,13 @@ if (!function_exists('infy_nls')) {
      *
      * @return string
      */
-    function infy_nls($count, $nls = 1)
+    function buildhat_nls($count, $nls = 1)
     {
-        return str_repeat(infy_nl($nls), $count);
+        return str_repeat(buildhat_nl($nls), $count);
     }
 }
 
-if (!function_exists('infy_nl_tab')) {
+if (!function_exists('buildhat_nl_tab')) {
     /**
      * Generates new line char.
      *
@@ -67,9 +67,9 @@ if (!function_exists('infy_nl_tab')) {
      *
      * @return string
      */
-    function infy_nl_tab($lns = 1, $tabs = 1)
+    function buildhat_nl_tab($lns = 1, $tabs = 1)
     {
-        return infy_nls($lns).infy_tabs($tabs);
+        return buildhat_nls($lns).buildhat_tabs($tabs);
     }
 }
 
@@ -87,8 +87,8 @@ if (!function_exists('get_template_file_path')) {
         $templateName = str_replace('.', '/', $templateName);
 
         $templatesPath = config(
-            'infyom.laravel_generator.path.templates_dir',
-            base_path('resources/infyom/infyom-generator-templates/')
+            'buildhat.path.templates_dir',
+            base_path('resources/buildhat/buildhat-generator-templates/')
         );
 
         $path = $templatesPath.$templateName.'.stub';
@@ -97,7 +97,7 @@ if (!function_exists('get_template_file_path')) {
             return $path;
         }
 
-        return base_path('vendor/infyomlabs/'.$templateType.'/templates/'.$templateName.'.stub');
+        return base_path('vendor/jeffersonmartin/buildhat/'.$templateType.'/templates/'.$templateName.'.stub');
     }
 }
 
@@ -143,7 +143,7 @@ if (!function_exists('fill_field_template')) {
      *
      * @param array                                   $variables
      * @param string                                  $template
-     * @param \InfyOm\Generator\Common\GeneratorField $field
+     * @param \Jeffersonmartin\Buildhat\Common\GeneratorField $field
      *
      * @return string
      */
@@ -164,7 +164,7 @@ if (!function_exists('fill_template_with_field_data')) {
      * @param array                                   $variables
      * @param array                                   $fieldVariables
      * @param string                                  $template
-     * @param \InfyOm\Generator\Common\GeneratorField $field
+     * @param \Jeffersonmartin\Buildhat\Common\GeneratorField $field
      *
      * @return string
      */
@@ -183,7 +183,7 @@ if (!function_exists('fill_template_with_field_data')) {
      * @param array                                   $variables
      * @param array                                   $fieldVariables
      * @param string                                  $template
-     * @param \InfyOm\Generator\Common\GeneratorField $field
+     * @param \Jeffersonmartin\Buildhat\Common\GeneratorField $field
      *
      * @return string
      */

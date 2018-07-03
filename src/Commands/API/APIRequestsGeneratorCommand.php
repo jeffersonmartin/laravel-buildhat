@@ -1,10 +1,10 @@
 <?php
 
-namespace InfyOm\Generator\Commands\API;
+namespace Jeffersonmartin\Buildhat\Commands\API;
 
-use InfyOm\Generator\Commands\BaseCommand;
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Generators\API\APIRequestGenerator;
+use Jeffersonmartin\Buildhat\Commands\BaseCommand;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Generators\API\APIRequestGenerator;
 
 class APIRequestsGeneratorCommand extends BaseCommand
 {
@@ -13,7 +13,7 @@ class APIRequestsGeneratorCommand extends BaseCommand
      *
      * @var string
      */
-    protected $name = 'infyom.api:requests';
+    protected $name = 'buildhat.api:requests';
 
     /**
      * The console command description.

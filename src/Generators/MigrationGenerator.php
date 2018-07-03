@@ -1,11 +1,11 @@
 <?php
 
-namespace InfyOm\Generator\Generators;
+namespace Jeffersonmartin\Buildhat\Generators;
 
 use File;
 use Illuminate\Support\Str;
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Utils\FileUtil;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Utils\FileUtil;
 use SplFileInfo;
 
 class MigrationGenerator extends BaseGenerator
@@ -19,7 +19,7 @@ class MigrationGenerator extends BaseGenerator
     public function __construct($commandData)
     {
         $this->commandData = $commandData;
-        $this->path = config('infyom.laravel_generator.path.migration', base_path('database/migrations/'));
+        $this->path = config('buildhat.path.migration', base_path('database/migrations/'));
     }
 
     public function generate()
@@ -79,7 +79,7 @@ class MigrationGenerator extends BaseGenerator
             $fields[] = '$table->softDeletes();';
         }
 
-        return implode(infy_nl_tab(1, 3), array_merge($fields, $foreignKeys));
+        return implode(buildhat_nl_tab(1, 3), array_merge($fields, $foreignKeys));
     }
 
     public function rollback()

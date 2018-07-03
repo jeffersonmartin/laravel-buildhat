@@ -1,6 +1,6 @@
 <?php
 
-namespace InfyOm\Generator\Utils;
+namespace Jeffersonmartin\Buildhat\Utils;
 
 class SchemaUtil
 {

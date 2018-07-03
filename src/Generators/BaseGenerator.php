@@ -1,8 +1,8 @@
 <?php
 
-namespace InfyOm\Generator\Generators;
+namespace Jeffersonmartin\Buildhat\Generators;
 
-use InfyOm\Generator\Utils\FileUtil;
+use Jeffersonmartin\Buildhat\Utils\FileUtil;
 
 class BaseGenerator
 {

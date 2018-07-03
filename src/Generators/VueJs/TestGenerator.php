@@ -1,10 +1,10 @@
 <?php
 
-namespace InfyOm\Generator\Generators\API;
+namespace Jeffersonmartin\Buildhat\Generators\API;
 
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Generators\BaseGenerator;
-use InfyOm\Generator\Utils\FileUtil;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Generators\BaseGenerator;
+use Jeffersonmartin\Buildhat\Utils\FileUtil;
 
 class TestGenerator extends BaseGenerator
 {

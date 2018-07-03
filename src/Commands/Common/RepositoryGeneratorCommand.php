@@ -1,10 +1,10 @@
 <?php
 
-namespace InfyOm\Generator\Commands\Common;
+namespace Jeffersonmartin\Buildhat\Commands\Common;
 
-use InfyOm\Generator\Commands\BaseCommand;
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Generators\RepositoryGenerator;
+use Jeffersonmartin\Buildhat\Commands\BaseCommand;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Generators\RepositoryGenerator;
 
 class RepositoryGeneratorCommand extends BaseCommand
 {
@@ -13,7 +13,7 @@ class RepositoryGeneratorCommand extends BaseCommand
      *
      * @var string
      */
-    protected $name = 'infyom:repository';
+    protected $name = 'buildhat:repository';
 
     /**
      * The console command description.

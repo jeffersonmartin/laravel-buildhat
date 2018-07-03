@@ -1,10 +1,10 @@
 <?php
 
-namespace InfyOm\Generator\Generators\Vuejs;
+namespace Jeffersonmartin\Buildhat\Generators\Vuejs;
 
 use Illuminate\Support\Str;
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Generators\BaseGenerator;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Generators\BaseGenerator;
 
 class RoutesGenerator extends BaseGenerator
 {

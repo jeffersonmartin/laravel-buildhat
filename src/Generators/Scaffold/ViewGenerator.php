@@ -1,13 +1,13 @@
 <?php
 
-namespace InfyOm\Generator\Generators\Scaffold;
+namespace Jeffersonmartin\Buildhat\Generators\Scaffold;
 
 use Illuminate\Support\Str;
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Generators\BaseGenerator;
-use InfyOm\Generator\Utils\FileUtil;
-use InfyOm\Generator\Utils\GeneratorFieldsInputUtil;
-use InfyOm\Generator\Utils\HTMLFieldGenerator;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Generators\BaseGenerator;
+use Jeffersonmartin\Buildhat\Utils\FileUtil;
+use Jeffersonmartin\Buildhat\Utils\GeneratorFieldsInputUtil;
+use Jeffersonmartin\Buildhat\Utils\HTMLFieldGenerator;
 
 class ViewGenerator extends BaseGenerator
 {
@@ -27,7 +27,7 @@ class ViewGenerator extends BaseGenerator
     {
         $this->commandData = $commandData;
         $this->path = $commandData->config->pathViews;
-        $this->templateType = config('infyom.laravel_generator.templates', 'adminlte-templates');
+        $this->templateType = config('buildhat.templates', 'adminlte-templates');
     }
 
     public function generate()
@@ -132,7 +132,7 @@ class ViewGenerator extends BaseGenerator
             );
         }
 
-        $tableBodyFields = implode(infy_nl_tab(1, 3), $tableBodyFields);
+        $tableBodyFields = implode(buildhat_nl_tab(1, 3), $tableBodyFields);
 
         return str_replace('$FIELD_BODY$', $tableBodyFields, $templateData);
     }
@@ -155,7 +155,7 @@ class ViewGenerator extends BaseGenerator
             );
         }
 
-        return implode(infy_nl_tab(1, 2), $headerFields);
+        return implode(buildhat_nl_tab(1, 2), $headerFields);
     }
 
     private function generateIndex()

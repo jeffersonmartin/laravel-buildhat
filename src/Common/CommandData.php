@@ -1,11 +1,11 @@
 <?php
 
-namespace InfyOm\Generator\Common;
+namespace Jeffersonmartin\Buildhat\Common;
 
 use Exception;
 use Illuminate\Console\Command;
-use InfyOm\Generator\Utils\GeneratorFieldsInputUtil;
-use InfyOm\Generator\Utils\TableFieldsGenerator;
+use Jeffersonmartin\Buildhat\Utils\GeneratorFieldsInputUtil;
+use Jeffersonmartin\Buildhat\Utils\TableFieldsGenerator;
 
 class CommandData
 {
@@ -201,7 +201,7 @@ class CommandData
                 } elseif (file_exists(base_path($fieldsFileValue))) {
                     $filePath = base_path($fieldsFileValue);
                 } else {
-                    $schemaFileDirector = config('infyom.laravel_generator.path.schema_files');
+                    $schemaFileDirector = config('buildhat.path.schema_files');
                     $filePath = $schemaFileDirector.$fieldsFileValue;
                 }
 

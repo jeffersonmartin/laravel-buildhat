@@ -1,8 +1,8 @@
 <?php
 
-namespace InfyOm\Generator\Commands\Publish;
+namespace Jeffersonmartin\Buildhat\Commands\Publish;
 
-use InfyOm\Generator\Utils\FileUtil;
+use Jeffersonmartin\Buildhat\Utils\FileUtil;
 
 class GeneratorPublishCommand extends PublishBaseCommand
 {
@@ -11,7 +11,7 @@ class GeneratorPublishCommand extends PublishBaseCommand
      *
      * @var string
      */
-    protected $name = 'infyom:publish';
+    protected $name = 'buildhat:publish';
 
     /**
      * The console command description.
@@ -40,8 +40,8 @@ class GeneratorPublishCommand extends PublishBaseCommand
      */
     private function fillTemplate($templateData)
     {
-        $apiVersion = config('infyom.laravel_generator.api_version', 'v1');
-        $apiPrefix = config('infyom.laravel_generator.api_prefix', 'api');
+        $apiVersion = config('buildhat.api_version', 'v1');
+        $apiPrefix = config('buildhat.api_prefix', 'api');
 
         $templateData = str_replace('$API_VERSION$', $apiVersion, $templateData);
         $templateData = str_replace('$API_PREFIX$', $apiPrefix, $templateData);
@@ -56,7 +56,7 @@ class GeneratorPublishCommand extends PublishBaseCommand
     {
         $traitPath = __DIR__.'/../../../templates/test/api_test_trait.stub';
 
-        $testsPath = config('infyom.laravel_generator.path.api_test', base_path('tests/'));
+        $testsPath = config('buildhat.path.api_test', base_path('tests/'));
 
         $this->publishFile($traitPath, $testsPath.'ApiTestTrait.php', 'ApiTestTrait.php');
 

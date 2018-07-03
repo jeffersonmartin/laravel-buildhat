@@ -1,9 +1,9 @@
 <?php
 
-namespace InfyOm\Generator\Generators;
+namespace Jeffersonmartin\Buildhat\Generators;
 
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Utils\FileUtil;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Utils\FileUtil;
 
 class RepositoryTestGenerator extends BaseGenerator
 {
@@ -19,7 +19,7 @@ class RepositoryTestGenerator extends BaseGenerator
     public function __construct($commandData)
     {
         $this->commandData = $commandData;
-        $this->path = config('infyom.laravel_generator.path.repository_test', base_path('tests/'));
+        $this->path = config('buildhat.path.repository_test', base_path('tests/'));
         $this->fileName = $this->commandData->modelName.'RepositoryTest.php';
     }
 

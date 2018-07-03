@@ -1,10 +1,10 @@
 <?php
 
-namespace InfyOm\Generator\Generators\Scaffold;
+namespace Jeffersonmartin\Buildhat\Generators\Scaffold;
 
 use Illuminate\Support\Str;
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Generators\BaseGenerator;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Generators\BaseGenerator;
 
 class MenuGenerator extends BaseGenerator
 {
@@ -27,11 +27,11 @@ class MenuGenerator extends BaseGenerator
     {
         $this->commandData = $commandData;
         $this->path = config(
-            'infyom.laravel_generator.path.views',
+            'buildhat.path.views',
             base_path('resources/views/'
             )
         ).$commandData->getAddOn('menu.menu_file');
-        $this->templateType = config('infyom.laravel_generator.templates', 'adminlte-templates');
+        $this->templateType = config('buildhat.templates', 'adminlte-templates');
 
         $this->menuContents = file_get_contents($this->path);
 
@@ -42,7 +42,7 @@ class MenuGenerator extends BaseGenerator
 
     public function generate()
     {
-        $this->menuContents .= $this->menuTemplate.infy_nl();
+        $this->menuContents .= $this->menuTemplate.buildhat_nl();
 
         file_put_contents($this->path, $this->menuContents);
         $this->commandData->commandComment("\n".$this->commandData->config->mCamelPlural.' menu added.');

@@ -1,6 +1,6 @@
 {
-    "name": "infyomlabs/laravel-generator",
-    "description": "InfyOm Laravel Generator",
+    "name": "jeffersonmartin/laravel-buildhat",
+    "description": "Buildhat Laravel Generator",
     "keywords": [
         "laravel",
         "api",
@@ -20,6 +20,10 @@
         {
             "name": "Mitul Golakiya",
             "email": "me@mitul.me"
+        },
+        {
+            "name": "Jefferson Martin",
+            "email": "jeff@jeffersonmartin.com"
         }
     ],
     "require": {
@@ -34,7 +38,7 @@
     },
     "autoload": {
         "psr-4": {
-            "InfyOm\\Generator\\": "src/"
+            "Buildhat\\Generator\\": "src/"
         },
         "files": [
             "src/helpers.php"
@@ -48,8 +52,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "\\InfyOm\\Generator\\InfyOmGeneratorServiceProvider"
+                "\\Jeffersonmartin\\Buildhat\\BuildhatServiceProvider"
             ]
         }
-    }    
+    }
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace InfyOm\Generator\Generators\Scaffold;
+namespace Jeffersonmartin\Buildhat\Generators\Scaffold;
 
 use Illuminate\Support\Str;
-use InfyOm\Generator\Common\CommandData;
+use Jeffersonmartin\Buildhat\Common\CommandData;
 
 class RoutesGenerator
 {

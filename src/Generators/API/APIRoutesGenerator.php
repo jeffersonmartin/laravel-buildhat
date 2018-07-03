@@ -1,10 +1,10 @@
 <?php
 
-namespace InfyOm\Generator\Generators\API;
+namespace Jeffersonmartin\Buildhat\Generators\API;
 
 use Illuminate\Support\Str;
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Generators\BaseGenerator;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Generators\BaseGenerator;
 
 class APIRoutesGenerator extends BaseGenerator
 {

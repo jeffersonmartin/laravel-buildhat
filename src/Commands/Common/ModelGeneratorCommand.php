@@ -1,10 +1,10 @@
 <?php
 
-namespace InfyOm\Generator\Commands\Common;
+namespace Jeffersonmartin\Buildhat\Commands\Common;
 
-use InfyOm\Generator\Commands\BaseCommand;
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Generators\ModelGenerator;
+use Jeffersonmartin\Buildhat\Commands\BaseCommand;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Generators\ModelGenerator;
 
 class ModelGeneratorCommand extends BaseCommand
 {
@@ -13,7 +13,7 @@ class ModelGeneratorCommand extends BaseCommand
      *
      * @var string
      */
-    protected $name = 'infyom:model';
+    protected $name = 'buildhat:model';
 
     /**
      * The console command description.

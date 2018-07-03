@@ -1,9 +1,9 @@
 <?php
 
-namespace InfyOm\Generator\Controller;
+namespace Jeffersonmartin\Buildhat\Controller;
 
 use App\Http\Controllers\Controller as Controller;
-use InfyOm\Generator\Utils\ResponseUtil;
+use Jeffersonmartin\Buildhat\Utils\ResponseUtil;
 use Response;
 
 // @TODO This class need to be removed once we release our first version.

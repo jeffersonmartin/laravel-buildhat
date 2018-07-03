@@ -1,9 +1,9 @@
 <?php
 
-namespace InfyOm\Generator\Request;
+namespace Jeffersonmartin\Buildhat\Request;
 
 use Illuminate\Foundation\Http\FormRequest;
-use InfyOm\Generator\Utils\ResponseUtil;
+use Jeffersonmartin\Buildhat\Utils\ResponseUtil;
 use Response;
 
 class APIRequest extends FormRequest

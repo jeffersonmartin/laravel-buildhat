@@ -1,10 +1,10 @@
 <?php
 
-namespace InfyOm\Generator\Generators\Scaffold;
+namespace Jeffersonmartin\Buildhat\Generators\Scaffold;
 
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Generators\BaseGenerator;
-use InfyOm\Generator\Utils\FileUtil;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Generators\BaseGenerator;
+use Jeffersonmartin\Buildhat\Utils\FileUtil;
 
 class ControllerGenerator extends BaseGenerator
 {
@@ -24,7 +24,7 @@ class ControllerGenerator extends BaseGenerator
     {
         $this->commandData = $commandData;
         $this->path = $commandData->config->pathController;
-        $this->templateType = config('infyom.laravel_generator.templates', 'adminlte-templates');
+        $this->templateType = config('buildhat.templates', 'adminlte-templates');
         $this->fileName = $this->commandData->modelName.'Controller.php';
     }
 
@@ -80,7 +80,7 @@ class ControllerGenerator extends BaseGenerator
 
         $fileName = $this->commandData->modelName.'DataTable.php';
 
-        $fields = implode(','.infy_nl_tab(1, 3), $headerFields);
+        $fields = implode(','.buildhat_nl_tab(1, 3), $headerFields);
 
         $templateData = str_replace('$DATATABLE_COLUMNS$', $fields, $templateData);
 

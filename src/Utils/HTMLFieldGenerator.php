@@ -1,8 +1,8 @@
 <?php
 
-namespace InfyOm\Generator\Utils;
+namespace Jeffersonmartin\Buildhat\Utils;
 
-use InfyOm\Generator\Common\GeneratorField;
+use Jeffersonmartin\Buildhat\Common\GeneratorField;
 
 class HTMLFieldGenerator
 {

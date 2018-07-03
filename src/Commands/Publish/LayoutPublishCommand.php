@@ -1,8 +1,8 @@
 <?php
 
-namespace InfyOm\Generator\Commands\Publish;
+namespace Jeffersonmartin\Buildhat\Commands\Publish;
 
-use InfyOm\Generator\Utils\FileUtil;
+use Jeffersonmartin\Buildhat\Utils\FileUtil;
 
 class LayoutPublishCommand extends PublishBaseCommand
 {
@@ -11,7 +11,7 @@ class LayoutPublishCommand extends PublishBaseCommand
      *
      * @var string
      */
-    protected $name = 'infyom.publish:layout';
+    protected $name = 'buildhat.publish:layout';
 
     /**
      * The console command description.
@@ -34,8 +34,8 @@ class LayoutPublishCommand extends PublishBaseCommand
 
     private function copyView()
     {
-        $viewsPath = config('infyom.laravel_generator.path.views', base_path('resources/views/'));
-        $templateType = config('infyom.laravel_generator.templates', 'adminlte-templates');
+        $viewsPath = config('buildhat.path.views', base_path('resources/views/'));
+        $templateType = config('buildhat.templates', 'adminlte-templates');
 
         $this->createDirectories($viewsPath);
 
@@ -76,7 +76,7 @@ class LayoutPublishCommand extends PublishBaseCommand
 
     private function updateRoutes()
     {
-        $path = config('infyom.laravel_generator.path.routes', app_path('routes/web.php'));
+        $path = config('buildhat.path.routes', app_path('routes/web.php'));
 
         $prompt = 'Existing routes web.php file detected. Should we add standard auth routes? (y|N) :';
         if (file_exists($path) && !$this->confirmOverwrite($path, $prompt)) {
@@ -99,7 +99,7 @@ class LayoutPublishCommand extends PublishBaseCommand
 
         $templateData = $this->fillTemplate($templateData);
 
-        $controllerPath = config('infyom.laravel_generator.path.controller', app_path('Http/Controllers/'));
+        $controllerPath = config('buildhat.path.controller', app_path('Http/Controllers/'));
 
         $fileName = 'HomeController.php';
 
@@ -123,12 +123,12 @@ class LayoutPublishCommand extends PublishBaseCommand
     {
         $templateData = str_replace(
             '$NAMESPACE_CONTROLLER$',
-            config('infyom.laravel_generator.namespace.controller'), $templateData
+            config('buildhat.namespace.controller'), $templateData
         );
 
         $templateData = str_replace(
             '$NAMESPACE_REQUEST$',
-            config('infyom.laravel_generator.namespace.request'), $templateData
+            config('buildhat.namespace.request'), $templateData
         );
 
         return $templateData;

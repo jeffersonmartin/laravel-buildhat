@@ -1,8 +1,8 @@
 <?php
 
-namespace InfyOm\Generator\Commands;
+namespace Jeffersonmartin\Buildhat\Commands;
 
-use InfyOm\Generator\Common\CommandData;
+use Jeffersonmartin\Buildhat\Common\CommandData;
 
 class APIScaffoldGeneratorCommand extends BaseCommand
 {
@@ -11,7 +11,7 @@ class APIScaffoldGeneratorCommand extends BaseCommand
      *
      * @var string
      */
-    protected $name = 'infyom:api_scaffold';
+    protected $name = 'buildhat:api_scaffold';
 
     /**
      * The console command description.

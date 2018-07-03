@@ -1,10 +1,10 @@
 <?php
 
-namespace InfyOm\Generator\Generators;
+namespace Jeffersonmartin\Buildhat\Generators;
 
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Utils\FileUtil;
-use InfyOm\Generator\Utils\GeneratorFieldsInputUtil;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Utils\FileUtil;
+use Jeffersonmartin\Buildhat\Utils\GeneratorFieldsInputUtil;
 
 class TestTraitGenerator extends BaseGenerator
 {
@@ -40,7 +40,7 @@ class TestTraitGenerator extends BaseGenerator
     {
         $templateData = fill_template($this->commandData->dynamicVars, $templateData);
 
-        $templateData = str_replace('$FIELDS$', implode(','.infy_nl_tab(1, 3), $this->generateFields()),
+        $templateData = str_replace('$FIELDS$', implode(','.buildhat_nl_tab(1, 3), $this->generateFields()),
             $templateData);
 
         return $templateData;

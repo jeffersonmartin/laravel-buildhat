@@ -1,9 +1,9 @@
 <?php
 
-namespace InfyOm\Generator\Generators;
+namespace Jeffersonmartin\Buildhat\Generators;
 
-use InfyOm\Generator\Common\CommandData;
-use InfyOm\Generator\Utils\FileUtil;
+use Jeffersonmartin\Buildhat\Common\CommandData;
+use Jeffersonmartin\Buildhat\Utils\FileUtil;
 
 class RepositoryGenerator extends BaseGenerator
 {
@@ -37,7 +37,7 @@ class RepositoryGenerator extends BaseGenerator
             }
         }
 
-        $templateData = str_replace('$FIELDS$', implode(','.infy_nl_tab(1, 2), $searchables), $templateData);
+        $templateData = str_replace('$FIELDS$', implode(','.buildhat_nl_tab(1, 2), $searchables), $templateData);
 
         $docsTemplate = get_template('docs.repository', 'laravel-generator');
         $docsTemplate = fill_template($this->commandData->dynamicVars, $docsTemplate);
