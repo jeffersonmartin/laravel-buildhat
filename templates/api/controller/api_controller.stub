@@ -12,21 +12,20 @@ use Jeffersonmartin\Buildhat\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-$DOC_CONTROLLER$
 class $MODEL_NAME$APIController extends AppBaseController
 {
 
     protected function $MODEL_NAME_CAMEL$Repository()
     {
-        return app(Repositories\$MODEL_NAME_PLURAL$::class);
+        return app(Repositories\$MODEL_NAME_SINGULAR$Repository::class);
     }
 
     $DOC_INDEX$
     public function index(Request $request)
     {
-        $this->$MODEL_NAME_CAMEL$Repository->pushCriteria(new RequestCriteria($request));
-        $this->$MODEL_NAME_CAMEL$Repository->pushCriteria(new LimitOffsetCriteria($request));
-        $$MODEL_NAME_PLURAL_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->all();
+        $this->$MODEL_NAME_CAMEL$Repository()->pushCriteria(new RequestCriteria($request));
+        $this->$MODEL_NAME_CAMEL$Repository()->pushCriteria(new LimitOffsetCriteria($request));
+        $$MODEL_NAME_PLURAL_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->all();
 
         return $this->sendResponse($$MODEL_NAME_PLURAL_SNAKE$->toArray(), '$MODEL_NAME_PLURAL_HUMAN$ retrieved successfully');
     }
@@ -36,16 +35,16 @@ class $MODEL_NAME$APIController extends AppBaseController
     {
         $input = $request->all();
 
-        $$MODEL_NAME_PLURAL_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->create($input);
+        $$MODEL_NAME_PLURAL_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->create($input);
 
         return $this->sendResponse($$MODEL_NAME_PLURAL_SNAKE$->toArray(), '$MODEL_NAME_HUMAN$ saved successfully');
     }
 
     $DOC_SHOW$
-    public function show($id)
+    public function show($uuid)
     {
         /** @var $MODEL_NAME$ $$MODEL_NAME_CAMEL$ */
-        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->findWithoutFail($uuid);
 
         if (empty($$MODEL_NAME_SNAKE$)) {
             return $this->sendError('$MODEL_NAME_HUMAN$ not found');
@@ -55,27 +54,27 @@ class $MODEL_NAME$APIController extends AppBaseController
     }
 
     $DOC_UPDATE$
-    public function update($id, Update$MODEL_NAME$APIRequest $request)
+    public function update($uuid, Update$MODEL_NAME$APIRequest $request)
     {
         $input = $request->all();
 
         /** @var $MODEL_NAME$ $$MODEL_NAME_CAMEL$ */
-        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->findWithoutFail($uuid);
 
         if (empty($$MODEL_NAME_SNAKE$)) {
             return $this->sendError('$MODEL_NAME_HUMAN$ not found');
         }
 
-        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->update($input, $id);
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->update($input, $uuid);
 
         return $this->sendResponse($$MODEL_NAME_SNAKE$->toArray(), '$MODEL_NAME$ updated successfully');
     }
 
     $DOC_DESTROY$
-    public function destroy($id)
+    public function destroy($uuid)
     {
         /** @var $MODEL_NAME$ $$MODEL_NAME_CAMEL$ */
-        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->findWithoutFail($uuid);
 
         if (empty($$MODEL_NAME_SNAKE$)) {
             return $this->sendError('$MODEL_NAME_HUMAN$ not found');
@@ -83,6 +82,6 @@ class $MODEL_NAME$APIController extends AppBaseController
 
         $$MODEL_NAME_SNAKE$->delete();
 
-        return $this->sendResponse($id, '$MODEL_NAME_HUMAN$ deleted successfully');
+        return $this->sendResponse($uuid, '$MODEL_NAME_HUMAN$ deleted successfully');
     }
 }
