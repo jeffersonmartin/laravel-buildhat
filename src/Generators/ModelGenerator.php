@@ -17,6 +17,7 @@ class ModelGenerator extends BaseGenerator
     protected $excluded_fields = [
         'created_at',
         'updated_at',
+        'deleted_at'
     ];
 
     /** @var CommandData */
@@ -70,6 +71,7 @@ class ModelGenerator extends BaseGenerator
 
         $templateData = $this->fillTimestamps($templateData);
 
+        /*
         if ($this->commandData->getOption('primary')) {
             $primary = buildhat_tab()."protected \$primaryKey = '".$this->commandData->getOption('primary')."';\n";
         } else {
@@ -77,6 +79,7 @@ class ModelGenerator extends BaseGenerator
         }
 
         $templateData = str_replace('$PRIMARY$', $primary, $templateData);
+        */
 
         $templateData = str_replace('$FIELDS$', implode(','.buildhat_nl_tab(1, 2), $fillables), $templateData);
 
@@ -109,7 +112,7 @@ class ModelGenerator extends BaseGenerator
             $templateData = str_replace('$SOFT_DELETE$', buildhat_tab()."use SoftDeletes;\n", $templateData);
             $deletedAtTimestamp = config('buildhat.timestamps.deleted_at', 'deleted_at');
             $templateData = str_replace(
-                '$SOFT_DELETE_DATES$', buildhat_nl_tab()."protected \$dates = ['".$deletedAtTimestamp."'];\n",
+                '$SOFT_DELETE_DATES$', "'".$deletedAtTimestamp."'",
                 $templateData
             );
         }
@@ -220,8 +223,8 @@ class ModelGenerator extends BaseGenerator
                     return !empty($field) ? "'$field'" : 'null';
                 });
 
-                $replace .= buildhat_nl_tab()."const CREATED_AT = $created_at;";
-                $replace .= buildhat_nl_tab()."const UPDATED_AT = $updated_at;\n";
+                $replace .= "'".$created_at."'\n";
+                $replace .= "'".$updated_at."'\n";
             }
         }
 
