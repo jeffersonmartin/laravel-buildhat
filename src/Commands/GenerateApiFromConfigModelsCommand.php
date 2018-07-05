@@ -25,6 +25,8 @@ class GenerateApiFromConfigModelsCommand extends BaseCommand
      */
     public function __construct()
     {
+        parent::__construct();
+        
         $this->commandData = new CommandData($this, CommandData::$COMMAND_TYPE_API_SCAFFOLD);
     }
 
@@ -35,6 +37,8 @@ class GenerateApiFromConfigModelsCommand extends BaseCommand
      */
     public function handle()
     {
+
+        parent::handle();
 
         // Get array of models to generate API for
         $models = config('buildhat.models');
