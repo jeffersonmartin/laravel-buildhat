@@ -220,11 +220,11 @@ class ModelGenerator extends BaseGenerator
                 $replace = buildhat_nl_tab()."public \$timestamps = false;\n";
             } else {
                 list($created_at, $updated_at) = collect($timestamps)->map(function ($field) {
-                    return !empty($field) ? "'$field'" : 'null';
+                    return !empty($field) ? "$field" : 'null';
                 });
 
-                $replace .= "'".$created_at."'\n";
-                $replace .= "'".$updated_at."'\n";
+                $replace .= "'".$created_at."',";
+                $replace .= buildhat_nl_tab(1, 2)."'".$updated_at."',";
             }
         }
 
