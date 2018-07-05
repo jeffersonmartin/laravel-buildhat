@@ -16,7 +16,7 @@ class $MODEL_NAME$Controller extends AppBaseController
 
     protected function $MODEL_NAME_CAMEL$Repository()
     {
-        return app(Repositories\$MODEL_NAME_PLURAL$::class);
+        return app(Repositories\$MODEL_NAME$Repository::class);
     }
 
     /**
