@@ -2,8 +2,6 @@
 
 namespace Jeffersonmartin\Buildhat\Commands;
 
-use Jeffersonmartin\Buildhat\Common\CommandData;
-
 class GenerateApiFromConfigModelsCommand extends BaseCommand
 {
     /**
@@ -26,8 +24,6 @@ class GenerateApiFromConfigModelsCommand extends BaseCommand
     public function __construct()
     {
         parent::__construct();
-        
-        $this->commandData = new CommandData($this, CommandData::$COMMAND_TYPE_API_SCAFFOLD);
     }
 
     /**
