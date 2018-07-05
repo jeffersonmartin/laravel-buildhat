@@ -45,7 +45,7 @@ class GenerateApiFromConfigModelsCommand extends BaseCommand
         foreach($models as $model_name => $table_name) {
 
             // Run generator command
-            @this->line('<fg=red>Generating API for '.$model_name.'</>');
+            $this->line('<fg=red>Generating API for '.$model_name.'</>');
             exec('cd '.$base_path.' && php artisan buildhat:api '.$model_name.' --fromTable --tableName='.$table_name);
 
         }
