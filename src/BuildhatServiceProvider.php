@@ -21,6 +21,7 @@ use Jeffersonmartin\Buildhat\Commands\Scaffold\RequestsGeneratorCommand;
 use Jeffersonmartin\Buildhat\Commands\Scaffold\ScaffoldGeneratorCommand;
 use Jeffersonmartin\Buildhat\Commands\Scaffold\ViewsGeneratorCommand;
 use Jeffersonmartin\Buildhat\Commands\VueJs\VueJsGeneratorCommand;
+use Jeffersonmartin\Buildhat\Commands\GenerateApiFromConfigModelsCommand;
 
 class BuildhatServiceProvider extends ServiceProvider
 {
@@ -116,6 +117,10 @@ class BuildhatServiceProvider extends ServiceProvider
             return new VueJsLayoutPublishCommand();
         });
 
+        $this->app->singleton('buildhat.generate.config.models', function ($app) {
+            return new GenerateApiFromConfigModelsCommand();
+        });
+
         $this->commands([
             'buildhat.publish',
             'buildhat.api',
@@ -135,6 +140,7 @@ class BuildhatServiceProvider extends ServiceProvider
             'buildhat.rollback',
             'buildhat.vuejs',
             'buildhat.publish.vuejs',
+            'buildhat.generate.config.models',
         ]);
     }
 }
