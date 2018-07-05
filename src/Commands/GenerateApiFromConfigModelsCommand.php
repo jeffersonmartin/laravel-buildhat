@@ -25,7 +25,7 @@ class GenerateApiFromConfigModelsCommand extends Command
      */
     public function __construct()
     {
-        // parent::__construct();
+        parent::__construct();
     }
 
     /**
