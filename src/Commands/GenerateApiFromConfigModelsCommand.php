@@ -2,7 +2,9 @@
 
 namespace Jeffersonmartin\Buildhat\Commands;
 
-class GenerateApiFromConfigModelsCommand extends BaseCommand
+use Illuminate\Console\Command;
+
+class GenerateApiFromConfigModelsCommand extends Command
 {
     /**
      * The console command name.
