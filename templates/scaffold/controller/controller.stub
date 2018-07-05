@@ -16,7 +16,7 @@ class $MODEL_NAME$Controller extends AppBaseController
 
     protected function $MODEL_NAME_CAMEL$Repository()
     {
-        return app(Repositories\$MODEL_NAME_PLURAL$::class);
+        return app(Repositories\$MODEL_NAME$Repository::class);
     }
 
     /**
@@ -27,8 +27,8 @@ class $MODEL_NAME$Controller extends AppBaseController
      */
     public function index(Request $request)
     {
-        $this->$MODEL_NAME_CAMEL$Repository->pushCriteria(new RequestCriteria($request));
-        $$MODEL_NAME_PLURAL_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->$RENDER_TYPE$;
+        $this->$MODEL_NAME_CAMEL$Repository()->pushCriteria(new RequestCriteria($request));
+        $$MODEL_NAME_PLURAL_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->$RENDER_TYPE$;
 
         return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_DOT$.index')
             ->with('$MODEL_NAME_PLURAL_SNAKE$', $$MODEL_NAME_PLURAL_SNAKE$);
@@ -55,7 +55,7 @@ class $MODEL_NAME$Controller extends AppBaseController
     {
         $input = $request->all();
 
-        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->create($input);
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->create($input);
 
         Flash::success('$MODEL_NAME_HUMAN$ saved successfully.');
 
@@ -69,9 +69,9 @@ class $MODEL_NAME$Controller extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
+    public function show($uuid)
     {
-        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->findWithoutFail($uuid);
 
         if (empty($$MODEL_NAME_SNAKE$)) {
             Flash::error('$MODEL_NAME_HUMAN$ not found');
@@ -89,9 +89,9 @@ class $MODEL_NAME$Controller extends AppBaseController
      *
      * @return Response
      */
-    public function edit($id)
+    public function edit($uuid)
     {
-        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->findWithoutFail($uuid);
 
         if (empty($$MODEL_NAME_CAMEL$)) {
             Flash::error('$MODEL_NAME_HUMAN$ not found');
@@ -110,9 +110,9 @@ class $MODEL_NAME$Controller extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, Update$MODEL_NAME$Request $request)
+    public function update($uuid, Update$MODEL_NAME$Request $request)
     {
-        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->findWithoutFail($uuid);
 
         if (empty($$MODEL_NAME_SNAKE$)) {
             Flash::error('$MODEL_NAME_HUMAN$ not found');
@@ -120,7 +120,7 @@ class $MODEL_NAME$Controller extends AppBaseController
             return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_DOT$.index'));
         }
 
-        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->update($request->all(), $id);
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->update($request->all(), $uuid);
 
         Flash::success('$MODEL_NAME_HUMAN$ updated successfully.');
 
@@ -136,7 +136,7 @@ class $MODEL_NAME$Controller extends AppBaseController
      */
     public function destroy($uuid)
     {
-        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($uuid);
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->findWithoutFail($uuid);
 
         if (empty($$MODEL_NAME_SNAKE$)) {
             Flash::error('$MODEL_NAME_HUMAN$ not found');
@@ -144,7 +144,7 @@ class $MODEL_NAME$Controller extends AppBaseController
             return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_DOT$.index'));
         }
 
-        $this->$MODEL_NAME_CAMEL$Repository->delete($uuid);
+        $this->$MODEL_NAME_CAMEL$Repository()->delete($uuid);
 
         Flash::success('$MODEL_NAME_HUMAN$ deleted successfully.');
 
