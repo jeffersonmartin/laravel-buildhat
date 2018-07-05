@@ -25,7 +25,7 @@ class GenerateApiFromConfigModelsCommand extends Command
      */
     public function __construct()
     {
-        parent::__construct();
+        // parent::__construct();
     }
 
     /**
@@ -36,7 +36,7 @@ class GenerateApiFromConfigModelsCommand extends Command
     public function handle()
     {
 
-        parent::handle();
+        // parent::handle();
 
         // Get array of models to generate API for
         $models = config('buildhat.models');
