@@ -17,7 +17,7 @@ class $MODEL_NAME$APIController extends AppBaseController
 
     protected function $MODEL_NAME_CAMEL$Repository()
     {
-        return app(Repositories\$MODEL_NAME_SINGULAR$Repository::class);
+        return app(Repositories\$MODEL_NAME$Repository::class);
     }
 
     $DOC_INDEX$
