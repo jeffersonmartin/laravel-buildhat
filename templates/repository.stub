@@ -2,19 +2,119 @@
 
 namespace $NAMESPACE_REPOSITORY$;
 
-use $NAMESPACE_MODEL$\$MODEL_NAME$;
+use $NAMESPACE_MODEL$;
 use Jeffersonmartin\Buildhat\Common\BaseRepository;
 
 $DOCS$
 class $MODEL_NAME$Repository extends BaseRepository
 {
 
-    protected $fieldSearchable = [
-        $FIELDS$
-    ];
-
-    public function model()
+    public function __construct()
     {
-        return $MODEL_NAME$::class;
+        $this->counters = [];
+        $this->relationships = [];
+        $this->has = [];
+    }
+
+    /**
+     * Store a new $MODEL_NAME_HUMAN$
+     *
+     * @param array $payload    Array with form request payload
+     *      $DOC_STORE_PARAM_FIELDS$
+     *
+     * @return array
+     *      integer|code        HTTP Status Code
+     *      string|message      Result message
+     *      array|data          Record data
+     */
+    public function store($payload)
+    {
+        $$MODEL_NAME_SNAKE$ = new Models\$MODEL_NAME$;
+
+        // Define fields is exist in payload
+        $STORE_FIELDS$
+
+        $$MODEL_NAME_SNAKE$->save();
+
+        // Placeholder for actions on child or parent relationships
+
+        return [
+            'code' => '201',
+            'message' => 'Record created',
+            'data' => $$MODEL_NAME_SNAKE$
+        ];
+    }
+
+    /**
+     * Update an existing $MODEL_NAME_HUMAN$
+     *
+     * @param uuid $uuid        UUID of record to be updated
+     * @param array $payload    Array with form request payload
+     *      $DOC_UPDATE_PARAM_FIELDS$
+     *
+     * @return array
+     *      integer|code        HTTP Status Code
+     *      string|message      Result message
+     *      array|data          Record data
+     */
+    public function update($uuid, $payload)
+    {
+        $$MODEL_NAME_SNAKE$ = Models\$MODEL_NAME$::where('uuid', $uuid)->first();
+
+        // If no record found
+        if(! $$MODEL_NAME_SNAKE) {
+            return [
+                'code' => '404',
+                'message' => 'No record found',
+                'uuid' => $uuid
+            ];
+        }
+
+        // Define fields is exist in payload, otherwise use existing values
+        $UPDATE_FIELDS$
+
+        $$MODEL_NAME_SNAKE$->save();
+
+        // Placeholder for actions on child or parent relationships
+
+        return [
+            'code' => '200',
+            'message' => 'Record updated',
+            'data' => $$MODEL_NAME_SNAKE$
+        ];
+    }
+
+    /**
+     * Delete an existing $MODEL_NAME_HUMAN by UUID
+     *
+     * @param  uuid $uuid       UUID of record to be deleted
+     *
+     * @return array
+     *      integer|code        HTTP Status Code
+     *      string|message      Result message
+     *      uuid|uuid           UUID of record
+     */
+    public function delete($uuid)
+    {
+        $$MODEL_NAME_SNAKE$ = Models\$MODEL_NAME$::where('uuid', $uuid)->first();
+
+        // If no record found
+        if(! $$MODEL_NAME_SNAKE) {
+            return [
+                'code' => '404',
+                'message' => 'No record found',
+                'uuid' => $uuid
+            ];
+        }
+
+        // Placeholder for actions on child or parent relationships
+
+        $accounting_bank_account->delete();
+
+        return [
+            'code' => '204',
+            'message' => 'Record deleted',
+            'uuid' => $uuid
+        ];
     }
 }
