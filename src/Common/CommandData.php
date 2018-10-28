@@ -173,6 +173,13 @@ class CommandData
         $primaryKey->parseOptions('s,f,p,if,ii');
 
         $this->fields[] = $primaryKey;
+
+        $primaryUuidKey = new GeneratorField();
+        $primaryUuidKey->name = 'uuid';
+        $primaryUuidKey->parseDBType('uuid');
+        $primaryUuidKey->parseOptions('s,f,p,if');
+
+        $this->fields[] = $primaryUuidKey;
     }
 
     private function addTimestamps()
