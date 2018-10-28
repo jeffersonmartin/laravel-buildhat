@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Jeffersonmartin\Buildhat\Common\CommandData;
 use Jeffersonmartin\Buildhat\Generators\API\APIControllerGenerator;
 use Jeffersonmartin\Buildhat\Generators\API\APIRequestGenerator;
+use Jeffersonmartin\Buildhat\Generators\API\APIResourceGenerator;
 use Jeffersonmartin\Buildhat\Generators\API\APIRoutesGenerator;
 use Jeffersonmartin\Buildhat\Generators\API\APITestGenerator;
 use Jeffersonmartin\Buildhat\Generators\MigrationGenerator;
@@ -87,6 +88,11 @@ class BaseCommand extends Command
         if (!$this->isSkip('routes') and !$this->isSkip('api_routes')) {
             $routesGenerator = new APIRoutesGenerator($this->commandData);
             $routesGenerator->generate();
+        }
+
+        if (!$this->isSkip('resources') and !$this->isSkip('api_resources')) {
+            $resourcesGenerator = new APIResourceGenerator($this->commandData);
+            $resourcesGenerator->generate();
         }
 
         if (!$this->isSkip('tests') and $this->commandData->getAddOn('tests')) {
