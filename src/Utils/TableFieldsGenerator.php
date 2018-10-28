@@ -203,7 +203,7 @@ class TableFieldsGenerator
      */
     private function checkForPrimary(GeneratorField $field)
     {
-        if ($field->name == $this->primaryKey) {
+        if ($field->name == $this->primaryKey || $field->name == 'uuid') {
             $field->isPrimary = true;
             $field->isFillable = false;
             $field->isSearchable = false;
