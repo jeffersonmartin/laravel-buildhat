@@ -4,13 +4,9 @@ namespace $NAMESPACE_API_CONTROLLER$;
 
 use $NAMESPACE_MODEL$;
 use $NAMESPACE_REPOSITORY$;
+use $NAMESPACE_RESOURCE$;
 use Illuminate\Http\Request;
 use $NAMESPACE_APP$\Http\Controllers\AppBaseController;
-use $NAMESPACE_API_REQUEST$\Create$MODEL_NAME$APIRequest;
-use $NAMESPACE_API_REQUEST$\Update$MODEL_NAME$APIRequest;
-use Jeffersonmartin\Buildhat\Criteria\LimitOffsetCriteria;
-use Prettus\Repository\Criteria\RequestCriteria;
-use Response;
 
 class $MODEL_NAME$APIController extends AppBaseController
 {
@@ -23,65 +19,77 @@ class $MODEL_NAME$APIController extends AppBaseController
     $DOC_INDEX$
     public function index(Request $request)
     {
-        $this->$MODEL_NAME_CAMEL$Repository()->pushCriteria(new RequestCriteria($request));
-        $this->$MODEL_NAME_CAMEL$Repository()->pushCriteria(new LimitOffsetCriteria($request));
-        $$MODEL_NAME_PLURAL_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->all();
+        // Get $MODEL_NAME_PLURAL_HUMAN$
+        $$MODEL_NAME_PLURAL_SNAKE$ = Models\$MODEL_NAME$::withCount(
+            $this->$MODEL_NAME_CAMEL$Repository()->counters
+            )->get();
 
-        return $this->sendResponse($$MODEL_NAME_PLURAL_SNAKE$->toArray(), '$MODEL_NAME_PLURAL_HUMAN$ retrieved successfully');
-    }
-
-    $DOC_STORE$
-    public function store(Create$MODEL_NAME$APIRequest $request)
-    {
-        $input = $request->all();
-
-        $$MODEL_NAME_PLURAL_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->create($input);
-
-        return $this->sendResponse($$MODEL_NAME_PLURAL_SNAKE$->toArray(), '$MODEL_NAME_HUMAN$ saved successfully');
+        // Return JSON Resource Response
+        return $this->sendResponse(Resources\$MODEL_NAME$Resource::collection($$MODEL_NAME_PLURAL_SNAKE$), 'success', 200);
     }
 
     $DOC_SHOW$
     public function show($uuid)
     {
-        /** @var $MODEL_NAME$ $$MODEL_NAME_CAMEL$ */
-        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->findWithoutFail($uuid);
+        // Get $MODEL_NAME_HUMAN$ by UUID
+        $$MODEL_NAME_SNAKE$ = Models\$MODEL_NAME$::with(
+            $this->$MODEL_NAME_CAMEL$Repository()->relationships
+            )->withCount($this->$MODEL_NAME_CAMEL$Repository()->counters)
+            ->where('uuid', $uuid)
+            ->first();
 
-        if (empty($$MODEL_NAME_SNAKE$)) {
-            return $this->sendError('$MODEL_NAME_HUMAN$ not found');
+        if(empty($$MODEL_NAME_SNAKE$)) {
+            return $this->sendError('record not found', 404);
         }
 
-        return $this->sendResponse($$MODEL_NAME_SNAKE$->toArray(), '$MODEL_NAME_HUMAN$ retrieved successfully');
+        return $this->sendResponse(new Resources\$MODEL_NAME$Resource($$MODEL_NAME_SNAKE$), 'success', 200);
+    }
+
+    $DOC_STORE$
+    public function store(Create$MODEL_NAME$APIRequest $request)
+    {
+        // Use Laravel helper to convert request object to array
+        $payload = $request->all();
+
+        // Use repository method to store data
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->store($payload);
+
+        // Return JSON Resource Response
+        return $this->sendResponse(new Resources\$MODEL_NAME$Resource($$MODEL_NAME_SNAKE$), 'success', 201);
     }
 
     $DOC_UPDATE$
     public function update($uuid, Update$MODEL_NAME$APIRequest $request)
     {
-        $input = $request->all();
+        // Use Laravel helper to convert request object to array
+        $payload = $request->all();
 
-        /** @var $MODEL_NAME$ $$MODEL_NAME_CAMEL$ */
-        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->findWithoutFail($uuid);
+        // Get $MODEL_NAME_HUMAN$ by UUID
+        $$MODEL_NAME_SNAKE$ = Models\$MODEL_NAME$::where('uuid', $uuid)->first();
 
-        if (empty($$MODEL_NAME_SNAKE$)) {
-            return $this->sendError('$MODEL_NAME_HUMAN$ not found');
+        if(empty($$MODEL_NAME_SNAKE$)) {
+            return $this->sendError('record not found', 404);
         }
 
-        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->update($input, $uuid);
+        // Use repository method to update data
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->update($uuid, $input);
 
-        return $this->sendResponse($$MODEL_NAME_SNAKE$->toArray(), '$MODEL_NAME$ updated successfully');
+        return $this->sendResponse(new Resources\$MODEL_NAME$Resource($$MODEL_NAME_SNAKE$), 'success', 200);
     }
 
     $DOC_DESTROY$
     public function destroy($uuid)
     {
-        /** @var $MODEL_NAME$ $$MODEL_NAME_CAMEL$ */
-        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->findWithoutFail($uuid);
+        // Get $MODEL_NAME_HUMAN$ by UUID
+        $$MODEL_NAME_SNAKE$ = Models\$MODEL_NAME$::where('uuid', $uuid)->first();
 
-        if (empty($$MODEL_NAME_SNAKE$)) {
-            return $this->sendError('$MODEL_NAME_HUMAN$ not found');
+        if(empty($$MODEL_NAME_SNAKE$)) {
+            return $this->sendError('record not found', 404);
         }
 
-        $$MODEL_NAME_SNAKE$->delete();
+        // Use repository method to destroy data
+        $$MODEL_NAME_SNAKE$ = $this->$MODEL_NAME_CAMEL$Repository()->destroy($uuid);
 
-        return $this->sendResponse($uuid, '$MODEL_NAME_HUMAN$ deleted successfully');
+        return $this->sendResponse(null, 'success', 200);
     }
 }
