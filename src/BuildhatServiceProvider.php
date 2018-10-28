@@ -13,6 +13,7 @@ use Jeffersonmartin\Buildhat\Commands\Common\ModelGeneratorCommand;
 use Jeffersonmartin\Buildhat\Commands\Common\RepositoryGeneratorCommand;
 use Jeffersonmartin\Buildhat\Commands\Publish\GeneratorPublishCommand;
 use Jeffersonmartin\Buildhat\Commands\Publish\LayoutPublishCommand;
+use Jeffersonmartin\Buildhat\Commands\Publish\PublishSchemaCommand;
 use Jeffersonmartin\Buildhat\Commands\Publish\PublishTemplateCommand;
 use Jeffersonmartin\Buildhat\Commands\Publish\VueJsLayoutPublishCommand;
 use Jeffersonmartin\Buildhat\Commands\RollbackGeneratorCommand;
@@ -60,6 +61,10 @@ class BuildhatServiceProvider extends ServiceProvider
 
         $this->app->singleton('buildhat.publish.layout', function ($app) {
             return new LayoutPublishCommand();
+        });
+
+        $this->app->singleton('buildhat.publish.schemas', function ($app) {
+            return new PublishSchemaCommand();
         });
 
         $this->app->singleton('buildhat.publish.templates', function ($app) {
