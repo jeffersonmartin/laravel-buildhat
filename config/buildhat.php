@@ -30,6 +30,8 @@ return [
 
         'repository'        => app_path('Repositories/'),
 
+        'resource'          => app_path('Http/Resources/'),
+
         'routes'            => base_path('routes/web.php'),
 
         'api_routes'        => base_path('routes/api.php'),
@@ -50,9 +52,9 @@ return [
 
         'views'             => base_path('resources/views/'),
 
-        'schema_files'      => base_path('resources/model_schemas/'),
+        'schema_files'      => base_path('resources/buildhat/schemas/'),
 
-        'templates_dir'     => base_path('resources/buildhat/buildhat-generator-templates/'),
+        'templates_dir'     => base_path('resources/buildhat/generator-templates/'),
 
         'modelJs'           => base_path('resources/assets/js/models/'),
     ],
@@ -71,6 +73,8 @@ return [
         'datatables'        => 'App\DataTables',
 
         'repository'        => 'App\Repositories',
+
+        'resource'          => 'App\Http\Resources',
 
         'controller'        => 'App\Http\Controllers',
 
@@ -97,7 +101,7 @@ return [
     |
     */
 
-    'model_extend_class' => 'Eloquent',
+    'model_extend_class' => 'Jeffersonmartin\Buildhat\Common\BaseModel',
 
     /*
     |--------------------------------------------------------------------------
