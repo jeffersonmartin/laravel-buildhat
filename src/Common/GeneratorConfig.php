@@ -9,6 +9,7 @@ class GeneratorConfig
     /* Namespace variables */
     public $nsApp;
     public $nsRepository;
+    public $nsResource;
     public $nsModel;
     public $nsDataTables;
     public $nsModelExtend;
@@ -23,6 +24,7 @@ class GeneratorConfig
 
     /* Path variables */
     public $pathRepository;
+    public $pathResource;
     public $pathModel;
     public $pathDataTables;
 
@@ -121,7 +123,7 @@ class GeneratorConfig
         $this->nsDataTables = config('buildhat.namespace.datatables', 'App\DataTables').$prefix;
         $this->nsModelExtend = config(
             'buildhat.model_extend_class',
-            'Illuminate\Database\Eloquent\Model'
+            'Jeffersonmartin\Buildhat\Common\BaseModel'
         );
 
         $this->nsApiController = config(
@@ -130,6 +132,7 @@ class GeneratorConfig
         ).$prefix;
         $this->nsApiRequest = config('buildhat.namespace.api_request', 'App\Http\Requests\API').$prefix;
 
+        $this->nsResource = config('buildhat.namespace.resource', 'App\Http\Resources').$prefix;
         $this->nsRequest = config('buildhat.namespace.request', 'App\Http\Requests').$prefix;
         $this->nsRequestBase = config('buildhat.namespace.request', 'App\Http\Requests');
         $this->nsBaseController = config('buildhat.namespace.controller', 'App\Http\Controllers');
@@ -153,6 +156,11 @@ class GeneratorConfig
         $this->pathRepository = config(
             'buildhat.path.repository',
             app_path('Repositories/')
+        ).$prefix;
+
+        $this->pathResource = config(
+            'buildhat.path.resource',
+            app_path('Http/Resources/')
         ).$prefix;
 
         $this->pathModel = config('buildhat.path.model', app_path('Models/')).$prefix;
@@ -202,6 +210,7 @@ class GeneratorConfig
     {
         $commandData->addDynamicVariable('$NAMESPACE_APP$', $this->nsApp);
         $commandData->addDynamicVariable('$NAMESPACE_REPOSITORY$', $this->nsRepository);
+        $commandData->addDynamicVariable('$NAMESPACE_RESOURCE$', $this->nsResource);
         $commandData->addDynamicVariable('$NAMESPACE_MODEL$', $this->nsModel);
         $commandData->addDynamicVariable('$NAMESPACE_DATATABLES$', $this->nsDataTables);
         $commandData->addDynamicVariable('$NAMESPACE_MODEL_EXTEND$', $this->nsModelExtend);
