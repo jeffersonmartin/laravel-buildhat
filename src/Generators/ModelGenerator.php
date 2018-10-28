@@ -15,8 +15,11 @@ class ModelGenerator extends BaseGenerator
      * @var array
      */
     protected $excluded_fields = [
+        'created_by',
         'created_at',
+        'updated_by',
         'updated_at',
+        'deleted_by',
         'deleted_at'
     ];
 
@@ -273,10 +276,10 @@ class ModelGenerator extends BaseGenerator
                     break;
                 case 'dateTime':
                 case 'dateTimeTz':
-                    $rule .= "'datetime'";
+                    $rule .= "'string'";
                     break;
                 case 'date':
-                    $rule .= "'date'";
+                    $rule .= "'string'";
                     break;
                 case 'enum':
                 case 'string':
