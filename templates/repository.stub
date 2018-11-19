@@ -38,11 +38,8 @@ class $MODEL_NAME$Repository extends BaseRepository
 
         // Placeholder for actions on child or parent relationships
 
-        return [
-            'code' => '201',
-            'message' => 'Record created',
-            'data' => $$MODEL_NAME_SNAKE$
-        ];
+        $$MODEL_NAME_SNAKE$ = $$MODEL_NAME_SNAKE$->fresh();
+        return $$MODEL_NAME_SNAKE$;
     }
 
     /**
@@ -63,11 +60,7 @@ class $MODEL_NAME$Repository extends BaseRepository
 
         // If no record found
         if(! $$MODEL_NAME_SNAKE) {
-            return [
-                'code' => '404',
-                'message' => 'No record found',
-                'uuid' => $uuid
-            ];
+            abort(404, 'record not found');
         }
 
         // Define fields is exist in payload, otherwise use existing values
@@ -77,11 +70,8 @@ class $MODEL_NAME$Repository extends BaseRepository
 
         // Placeholder for actions on child or parent relationships
 
-        return [
-            'code' => '200',
-            'message' => 'Record updated',
-            'data' => $$MODEL_NAME_SNAKE$
-        ];
+        $$MODEL_NAME_SNAKE$ = $$MODEL_NAME_SNAKE$->fresh();
+        return $$MODEL_NAME_SNAKE$;
     }
 
     /**
@@ -100,21 +90,11 @@ class $MODEL_NAME$Repository extends BaseRepository
 
         // If no record found
         if(! $$MODEL_NAME_SNAKE) {
-            return [
-                'code' => '404',
-                'message' => 'No record found',
-                'uuid' => $uuid
-            ];
+            abort(404, 'record not found');
         }
 
         // Placeholder for actions on child or parent relationships
 
-        $accounting_bank_account->delete();
-
-        return [
-            'code' => '204',
-            'message' => 'Record deleted',
-            'uuid' => $uuid
-        ];
+        $$MODEL_NAME_SNAKE$->delete();
     }
 }
