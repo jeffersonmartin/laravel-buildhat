@@ -38,7 +38,7 @@ class APIRoutesGenerator extends BaseGenerator
 
     public function generate()
     {
-        $this->routeContents .= "\n\n".$this->routesTemplate;
+        $this->routeContents .= "\n".$this->routesTemplate;
 
         file_put_contents($this->path, $this->routeContents);
 
