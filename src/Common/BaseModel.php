@@ -4,12 +4,18 @@ namespace Jeffersonmartin\Buildhat\Common;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Str;
 
 class BaseModel extends EloquentModel
 {
 
     use SoftDeletes;
+
+    // Disable auto incrementing ID since we use UUID
+    public $incrementing = false;
+
+    // Since primary key is not an integer, set to a string
+    protected $keyType = string;
 
     // Mutate the following fields to timestamp format
     protected $dates = ['deleted_at'];
@@ -18,7 +24,7 @@ class BaseModel extends EloquentModel
     protected $hidden = [];
 
     // Append these fields to arrays
-    protected $appends = ['short_uuid'];
+    protected $appends = ['short_id'];
 
     // Run whenever a new model is instantiated
     protected static function boot()
@@ -28,7 +34,7 @@ class BaseModel extends EloquentModel
         // Attach to the 'creating' Model Event to provide a UUID
         // for the `uuid` field
         static::creating(function ($model) {
-            $model->uuid = (string)$model->generateNewId();
+            $model->id = (string)Str::uuid();
         });
 
         if (auth()->guest()) {
@@ -41,15 +47,13 @@ class BaseModel extends EloquentModel
 
     }
 
-    // Get a new version 4 (random) UUID.
-    public function generateNewId()
-    {
-        return Uuid::uuid4();
-    }
+    //
+    // Attributes
+    //
 
-    public function getShortUuidAttribute()
+    public function getShortIdAttribute()
     {
-        return substr($this->uuid, -6);
+        return substr($this->id, -6);
     }
 
 }
