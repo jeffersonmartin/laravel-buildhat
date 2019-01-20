@@ -18,7 +18,11 @@ class BaseModel extends EloquentModel
     protected $keyType = string;
 
     // Mutate the following fields to timestamp format
-    protected $dates = ['deleted_at'];
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
 
     // Hide these fields from arrays
     protected $hidden = [];
