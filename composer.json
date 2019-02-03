@@ -31,7 +31,8 @@
         "doctrine/dbal": "^2.7",
         "illuminate/support": "5.6.* || 5.7.x",
         "prettus/l5-repository": "~2.6",
-        "laracasts/flash": "~3.0"
+        "laracasts/flash": "~3.0",
+        "ramsey/uuid": "^3.8.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~5.0",
