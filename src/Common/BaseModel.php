@@ -15,7 +15,7 @@ class BaseModel extends EloquentModel
     public $incrementing = false;
 
     // Since primary key is not an integer, set to a string
-    protected $keyType = string;
+    protected $keyType = 'string';
 
     // Mutate the following fields to timestamp format
     protected $dates = [
@@ -38,7 +38,7 @@ class BaseModel extends EloquentModel
         // Attach to the 'creating' Model Event to provide a UUID
         // for the `uuid` field
         static::creating(function ($model) {
-            $model->id = Uuid::uuid4()->toString();
+            $model->id = Uuid::uuid4();
         });
 
         if (auth()->guest()) {
