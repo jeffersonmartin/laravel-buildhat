@@ -4,7 +4,7 @@ namespace Jeffersonmartin\Buildhat\Common;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 
 class BaseModel extends EloquentModel
 {
@@ -38,7 +38,7 @@ class BaseModel extends EloquentModel
         // Attach to the 'creating' Model Event to provide a UUID
         // for the `uuid` field
         static::creating(function ($model) {
-            $model->id = (string)Str::uuid();
+            $model->id = Uuid::uuid4()->toString();
         });
 
         if (auth()->guest()) {
